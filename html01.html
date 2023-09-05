@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="su1">
+        <input type="text" id="su2">
+        <hr>
+        <div id="result"></div>
+        <button type="button" id="btn1">+</button>
+        <button type="button" id="btn2">-</button>
+        <button type="button" id="btn3">*</button>
+        <button type="button" id="btn4">/</button>
+        <button type="button" id="btn5">%</button>
+    </div>
+    <script src="calc0.js"></script>
+    <script>
+        var res = document.getElementById("result");
+        document.getElementById("btn1").addEventListener("click", function(){
+            var su1 = parseInt(document.getElementById("su1").value);
+            var su2 = parseInt(document.getElementById("su2").value);
+            res.innerHTML = add(su1, su2);
+        });
+        document.getElementById("btn2").addEventListener("click", function(){
+            var su1 = parseInt(document.getElementById("su1").value);
+            var su2 = parseInt(document.getElementById("su2").value);
+            res.innerHTML = sub(su1, su2);
+        });
+        document.getElementById("btn3").addEventListener("click", function(){
+            var su1 = parseInt(document.getElementById("su1").value);
+            var su2 = parseInt(document.getElementById("su2").value);
+            res.innerHTML = mul(su1, su2);
+        });
+        document.getElementById("btn4").addEventListener("click", function(){
+            var su1 = parseInt(document.getElementById("su1").value);
+            var su2 = parseInt(document.getElementById("su2").value);
+            res.innerHTML = div(su1, su2);
+        });
+        document.getElementById("btn5").addEventListener("click", function(){
+            var su1 = parseInt(document.getElementById("su1").value);
+            var su2 = parseInt(document.getElementById("su2").value);
+            res.innerHTML = mod(su1, su2);
+        });
+    </script>
+</body>
+</html>
