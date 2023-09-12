@@ -54,7 +54,6 @@ app.get('/list', (req, res) => {
         });
         li = li + `</ul>`;
         res.send(temp1 + title + li + temp2);
-        //console.log(rows);
     })
     .catch((errMsg) => {
         res.send(temp1 + title + errMsg + temp2);
@@ -86,13 +85,12 @@ app.post('/addSamplePro', (req, res) => {
     title = "<h2>샘플 상세정보</h2>";
     dbCon.insertSample(req.body.name)
     .then((msg) => {
-        res.send(msg);
-        res.send(temp1 + title + body + temp2);
+        res.send(temp1 + title + msg + temp2);
     })
     .catch((errMsg) => {
-        res.send(errMsg);
         res.send(temp1 + title + errMsg + temp2);
     });
+    //res.sendFile(__dirname + "/sampleMain.html");
 });
 
 app.get('/editSample/:no', (req, res) => {
@@ -120,6 +118,7 @@ app.post('/editSamplePro', (req, res) => {
     .catch((errMsg) => {
         res.send(temp1 + title + errMsg + temp2);
     });
+    //res.sendFile(__dirname + "/sampleMain.html");
 });
 
 app.get('/deleteSamplePro/:no', (req, res) => {
@@ -131,6 +130,7 @@ app.get('/deleteSamplePro/:no', (req, res) => {
     .catch((errMsg) => {
         res.send(temp1 + title + errMsg + temp2);
     });
+    //res.sendFile(__dirname + "/sampleMain.html");
 });
 
 app.listen(port, () => {
