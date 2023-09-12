@@ -67,8 +67,7 @@ app.get('/get/:no', (req, res) => {
     dbCon.getSampleOne(req.params.no)
     .then((row) => {
         row.forEach(index => {
-            body = `<p>no : ${index.NO}, name : ${index.NAME}</p>`;
-            body = `<hr>
+            body = `<p>no : ${index.NO}, name : ${index.NAME}</p><hr>
             <p><a href="/editSample/${index.NO}">수정하기</a></p>
             <p><a href="/deleteSamplePro/${index.NO}">삭제하기</a></p>`;
         });
@@ -96,7 +95,6 @@ app.post('/addSamplePro', (req, res) => {
 });
 
 app.get('/editSample/:no', (req, res) => {
-    title = "<h2>샘플 수정하기</h2>";
     let body = "";
     dbCon.getSampleOne(req.params.no)
     .then((row) => {
@@ -104,7 +102,7 @@ app.get('/editSample/:no', (req, res) => {
             body = `<p><input type="hidden" name="no" value="${index.NO}" placeholder="no hidden"></p>
             <p><input type="text" name="name" value="${index.NAME}" placeholder="name input"></p>`;
         });
-        res.send(updateTemp1 + title + body + updateTemp2);
+        res.send(updateTemp1 + body + updateTemp2);
     })
     .catch((errMsg) => {
         res.send(temp1 + title + errMsg + temp2);
