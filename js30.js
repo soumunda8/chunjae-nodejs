@@ -116,24 +116,22 @@ app.post('/editSamplePro', (req, res) => {
     let smaple = [req.body.name, req.body.no];
     dbCon.updateSample(smaple)
     .then((msg) => {
-        res.send(msg);
+        res.send(temp1 + title + msg + temp2);
     })
     .catch((errMsg) => {
-        res.send(errMsg);
+        res.send(temp1 + title + errMsg + temp2);
     });
-    res.send(__dirname + "/sampleMain.html");
 });
 
 app.get('/deleteSamplePro/:no', (req, res) => {
     title = "<h2>샘플 삭제하기</h2>";
     dbCon.deleteSample(req.params.no)
     .then((msg) => {
-        res.send(msg);
+        res.send(temp1 + title + msg + temp2);
     })
     .catch((errMsg) => {
-        res.send(errMsg);
+        res.send(temp1 + title + errMsg + temp2);
     });
-    res.send(__dirname + "/sampleMain.html");
 });
 
 app.listen(port, () => {
