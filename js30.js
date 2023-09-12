@@ -87,11 +87,12 @@ app.post('/addSamplePro', (req, res) => {
     dbCon.insertSample(req.body.name)
     .then((msg) => {
         res.send(msg);
+        res.send(temp1 + title + body + temp2);
     })
     .catch((errMsg) => {
         res.send(errMsg);
+        res.send(temp1 + title + errMsg + temp2);
     });
-    res.send(__dirname + "/sampleMain.html");
 });
 
 app.get('/editSample/:no', (req, res) => {
